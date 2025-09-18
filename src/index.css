@@ -1,1 +1,46 @@
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("/public//fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-Medium";
+  src: url("/public//fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("/public//fonts/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("/public//fonts/Poppins-Bold.ttf");
+}
+
 @import "tailwindcss";
+
+@theme {
+  --color-green: #d4dfc7;
+  --color-blue: #96c0b7;
+  --color-grey: #878e88;
+  --color-input: #e9efe3;
+
+  --font-base: "Poppins-Regular", sans-serif;
+  --font-headline: "Poppins-Medium", sans-serif;
+  --font-buttons: "Poppins-Bold", sans-serif;
+}
+
+@layer base {
+  html {
+    @apply font-base;
+  }
+
+  h1 {
+    @apply text-blue;
+  }
+
+  h2 {
+    @apply text-blue;
+  }
+}

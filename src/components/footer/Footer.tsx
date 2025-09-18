@@ -2,18 +2,24 @@ import React from "react"
 
 export default function Footer() {
   return (
-    <footer>
-      <a href="https://www.facebook.com/?locale=de_DE" target="_blank">
-        <img src="../../../public/img/icon_instagram.svg" alt="Instagram" />
-      </a>
+    <footer className="flex items-center justify-center gap-6 h-32">
+      <div className="h-5">
+        <a href="https://www.facebook.com/?locale=de_DE" target="_blank">
+          <img src="./public/img/icon_instagram.svg" alt="Instagram" className="h-9" />
+        </a>
+      </div>
 
-      <a href="https://www.youtube.com/">
-        <img src="../../../public/img/icon_youtube.svg" alt="Youtube" />
-      </a>
+      <div className="h-5">
+        <a href="https://www.youtube.com/">
+          <img src="/public/img/icon_youtube.svg" alt="Youtube" className="h-9" />
+        </a>
+      </div>
 
-      <a href="">
-        <img src="/public/img/icon_facebook.svg" alt="Facebook" />
-      </a>
+      <div className="h-5">
+        <a href="https://de-de.facebook.com/">
+          <img src="/public/img/icon_facebook.svg" alt="Facebook" className="h-9" />
+        </a>
+      </div>
     </footer>
   )
 }
