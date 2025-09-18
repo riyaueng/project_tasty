@@ -1,4 +1,4 @@
-import React, { createContext, useMemo, useReducer } from "react"
+import React, { createContext, useEffect, useMemo, useReducer } from "react"
 import { initialState, reducer } from "../functions/Functions"
 import type { IMealsDetail, IState, Meal } from "../interfaces/Interfaces"
 import { getCategories, getMealDetail, getMealsByCategory, searchMeals } from "../api/Api"
@@ -9,6 +9,9 @@ export interface MainProviderProps extends IState {
   searchMealsByName: (name: string) => Promise<void>
   setQuery: (q: string) => void
   getMealDetail: (id: string) => Promise<IMealsDetail | null>
+  toggleFavorite: (meal: Meal) => void
+  isFavorite: (idMeal: string) => boolean
+  clearFavorites: () => void
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -16,6 +19,26 @@ export const mainContext = createContext<MainProviderProps | undefined>(undefine
 
 export default function MainProvider({ children }: { children: React.ReactNode }) {
   const [states, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("tasty.favorites")
+      if (raw) {
+        const parsed = JSON.parse(raw) as Meal[]
+        dispatch({ type: "SET_FAVORITES", payload: parsed })
+      }
+    } catch {
+      /* ignore */
+    }
+  }, [])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("tasty.favorites", JSON.stringify(states.favorites))
+    } catch {
+      /* ignore */
+    }
+  }, [states.favorites])
 
   // ? Fetch Categories
   async function fetchCategories() {
@@ -71,6 +94,16 @@ export default function MainProvider({ children }: { children: React.ReactNode }
     }
   }
 
+  function toggleFavorite(meal: Meal) {
+    dispatch({ type: "TOGGLE_FAVORITE", payload: meal })
+  }
+  function isFavorite(idMeal: string) {
+    return states.favorites.some((f) => f.idMeal === idMeal)
+  }
+  function clearFavorites() {
+    dispatch({ type: "SET_FAVORITES", payload: [] })
+  }
+
   const value = useMemo<MainProviderProps>(
     () => ({
       ...states,
@@ -79,6 +112,9 @@ export default function MainProvider({ children }: { children: React.ReactNode }
       searchMealsByName,
       setQuery,
       getMealDetail: fetchMealDetail,
+      toggleFavorite,
+      isFavorite,
+      clearFavorites,
     }),
     [states]
   )

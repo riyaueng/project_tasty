@@ -19,7 +19,18 @@ export const reducer = (state: IState, action: TAction): IState => {
     case "FETCH_MEALS":
       return { ...state, loading: false, meals: action.payload }
     case "FETCH_QUERY":
-      return { ...state, loading: false, query: action.payload }
+      return { ...state, query: action.payload }
+    case "SET_FAVORITES":
+      return { ...state, favorites: action.payload }
+    case "TOGGLE_FAVORITE": {
+      const exists = state.favorites.some((f) => f.idMeal === action.payload.idMeal)
+      const next = exists
+        ? state.favorites.filter((f) => f.idMeal !== action.payload.idMeal)
+        : [...state.favorites, action.payload]
+      return { ...state, favorites: next }
+    }
+    default:
+      return state
   }
 }
 
@@ -29,4 +40,5 @@ export const initialState: IState = {
   loading: false,
   error: null,
   query: "",
+  favorites: [],
 }

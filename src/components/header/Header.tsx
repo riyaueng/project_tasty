@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 
 export default function Header() {
+  const [search, setSearch] = useState("")
   return (
     <header className="flex items-center justify-center flex-col h-90">
       <img src="/public/img/logo_tasty.svg" alt="" className="m-14" />
@@ -10,7 +11,7 @@ export default function Header() {
         <input
           type="text"
           placeholder="Type something to search"
-          value=""
+          value={search}
           className="mb-6 mr-3 p-3 bg-input text-grey border-1 border-grey rounded-lg w-90 "
         />
         <button type="button" className="font-headline mb-6 p-3 bg-blue text-white rounded-lg w-36">

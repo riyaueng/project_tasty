@@ -33,6 +33,7 @@ export interface IState {
   loading: boolean
   error: string | null
   query: string
+  favorites: Meal[]
 }
 
 export type TAction =
@@ -41,3 +42,5 @@ export type TAction =
   | { type: "FETCH_CATEGORIES"; payload: Category[] }
   | { type: "FETCH_MEALS"; payload: Meal[] }
   | { type: "FETCH_QUERY"; payload: string }
+  | { type: "SET_FAVORITES"; payload: Meal[] }
+  | { type: "TOGGLE_FAVORITE"; payload: Meal }

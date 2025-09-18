@@ -21,6 +21,10 @@ export default function Categories() {
   if (!name) {
     return "404 Error"
   }
+  const { favorites } = useMeals()
+  useEffect(() => {
+    console.log("favorites length:", favorites.length, favorites)
+  }, [favorites])
 
   return (
     <>
@@ -37,7 +41,14 @@ export default function Categories() {
       {meals.map((m) => {
         return (
           <>
-            <MealLink key={m.idMeal} link={`/meal/${m.idMeal}`} linkName={m.strMeal} img={m.strMealThumb} />
+            <MealLink
+              key={m.idMeal}
+              link={`/meal/${m.idMeal}`}
+              linkName={m.strMeal}
+              img={m.strMealThumb}
+              meal={m}
+              imgClassName="w-full aspect-square object-cover"
+            />
           </>
         )
       })}

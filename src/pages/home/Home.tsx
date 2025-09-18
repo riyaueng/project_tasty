@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 import { useMeals } from "../../functions/Functions"
 import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
@@ -7,16 +7,16 @@ export default function Home() {
   const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
 
   useEffect(() => {
-    const init = async () => {
-      if (category.length === 0) {
-        await fetchCategories()
-      }
-      if (category.length > 0 && meals.length === 0) {
-        await fetchMealsByCategories(category[0].strCategory)
-      }
+    if (category.length === 0) {
+      void fetchCategories()
     }
-    void init()
-  }, [category, meals, fetchCategories, fetchMealsByCategories])
+  }, [category.length])
+
+  useEffect(() => {
+    if (category.length > 0 && meals.length === 0) {
+      void fetchMealsByCategories(category[0].strCategory)
+    }
+  }, [category.length, meals.length])
 
   return (
     <div>
