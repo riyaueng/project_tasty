@@ -32,7 +32,7 @@ export default function MealDetailPage() {
   return (
     <div>
       <header>
-        <Link to="/" className="">
+        <Link to={`/category/${meal.strCategory}`} className="">
           ← Zurück
         </Link>
         <h1>{meal.strMeal}</h1>

@@ -50,13 +50,13 @@ export default function Categories() {
     <div className="space-y-6">
       <div className="flex gap-2 mb-6">
         {category.map((c) => (
-          <Link key={c.idCategory} to={c.strCategory}>
+          <Link key={c.idCategory} to={`/category/${c.strCategory}`}>
             {c.strCategory}
           </Link>
         ))}
       </div>
 
-      <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {loading || !showMeals
           ? Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)
           : meals.map((m) => (
