@@ -22,3 +22,11 @@ export const reducer = (state: IState, action: TAction): IState => {
       return { ...state, loading: false, query: action.payload }
   }
 }
+
+export const initialState: IState = {
+  meals: [],
+  category: [],
+  loading: false,
+  error: null,
+  query: "",
+}
