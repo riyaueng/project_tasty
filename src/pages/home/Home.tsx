@@ -28,7 +28,6 @@ export default function Home() {
               link={`/category/${c.strCategory}`}
               linkName={c.strCategory}
               img={c.strCategoryThumb}
-              text={c.strCategory}
             />
           </>
         )
