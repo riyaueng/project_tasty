@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import "./App.css"
-
-function App() {
-  return <></>
-=======
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router"
 
 function App() {
@@ -21,5 +15,4 @@ function App() {
       <RouterProvider router={router} />
     </>
   )
->>>>>>> routing
 }
