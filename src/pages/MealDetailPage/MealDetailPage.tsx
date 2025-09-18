@@ -23,13 +23,6 @@ export default function MealDetailPage() {
   return (
     <div>
       <h3>{meal.strMeal}</h3>
-      <div>
-        <h2>Ingredients</h2>
-        {/* <ul>{props.ingredients}</ul>
-        <a href={props.link} target="_blank"> */}
-        {/* Watch on Youtube
-        </a> */}
-      </div>
     </div>
   )
 }
