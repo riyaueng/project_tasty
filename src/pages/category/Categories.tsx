@@ -1,21 +1,21 @@
-import { useParams } from "react-router"
+import { Link, useParams } from "react-router"
+import { useEffect } from "react"
+import { useMeals } from "../../functions/Functions"
 import MealLink from "../../components/mealLink/MealLink"
-import type { IMeals } from "../../interfaces/Interfaces"
-import { useEffect, useState } from "react"
-import { api } from "../../api/Api"
 
 export default function Categories() {
-  const { name = "" } = useParams<string>()
-  const [meals, setMeals] = useState<IMeals[]>([])
-  const [loading, setLoading] = useState(true)
+  const { name } = useParams<{ name: string }>()
+  const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
 
   useEffect(() => {
-    ;(async () => {
-      setLoading(true)
-      const list = await api.listByCategory(name)
-      setMeals(list)
-      setLoading(false)
-    })()
+    if (category.length === 0) {
+      void fetchCategories()
+    }
+  }, [category.length])
+
+  useEffect(() => {
+    if (!name) return
+    void fetchMealsByCategories(name)
   }, [name])
 
   if (!name) {
@@ -24,7 +24,23 @@ export default function Categories() {
 
   return (
     <>
-      <MealLink link={`/meal/${id}`} linkName={name} text={""} img={""} />
+      {category.map((c) => {
+        return (
+          <>
+            <Link key={c.idCategory} to={`/category/${c.strCategory}`}>
+              {c.strCategory}
+            </Link>
+          </>
+        )
+      })}
+
+      {meals.map((m) => {
+        return (
+          <>
+            <MealLink key={m.idMeal} link={`/meal/${m.idMeal}`} linkName={m.strMeal} img={m.strMealThumb} />
+          </>
+        )
+      })}
     </>
   )
 }

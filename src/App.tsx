@@ -1,6 +1,8 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router"
 import Layout from "./layout/Layout"
 import Home from "./pages/home/Home"
+import Categories from "./pages/category/Categories"
+import MealDetailPage from "./pages/MealDetailPage/MealDetailPage"
 
 // routing
 
@@ -9,8 +11,8 @@ function App() {
     createRoutesFromElements(
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="category/:name" element={"Category"} />
-        <Route path="meal/:id" element={"MealDetail"} />
+        <Route path="category/:name" element={<Categories />} />
+        <Route path="meal/:id" element={<MealDetailPage />} />
       </Route>
     )
   )
