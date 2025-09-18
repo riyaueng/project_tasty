@@ -1,9 +1,10 @@
 import React, { useState } from "react"
+import { NavLink } from "react-router"
 
 export default function Header() {
   const [search, setSearch] = useState("")
   return (
-    <header className="flex items-center justify-center flex-col h-90">
+    <header className="flex items-center justify-center flex-col">
       <img src="/public/img/logo_tasty.svg" alt="" className="m-14" />
       <h2 className="text-4xl mb-6">Find a recipe, an idea, an inspiration…</h2>
 
@@ -17,6 +18,14 @@ export default function Header() {
         <button type="button" className="font-headline mb-6 p-3 bg-blue text-white rounded-lg w-36">
           Search
         </button>
+        <div className="flex text-center items-center justify-center gap-20">
+          <NavLink className={"font-headline mb-6 p-3 bg-blue text-white rounded-lg w-36"} to="/" end>
+            Home
+          </NavLink>
+          <NavLink className={"font-headline mb-6 p-3 bg-blue text-white rounded-lg w-36"} to="/favorites">
+            Favoriten
+          </NavLink>
+        </div>
       </div>
     </header>
   )

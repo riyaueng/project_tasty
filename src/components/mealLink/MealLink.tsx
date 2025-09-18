@@ -36,17 +36,16 @@ export default function MealLink({
       {meal && (
         <button
           type="button"
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            toggleFavorite(meal)
-          }}
+          title={active ? "Aus Favoriten entfernen" : "Zu Favoriten hinzufügen"}
           className={[
             "absolute top-2 right-2 z-10 rounded-md border px-2 py-1 text-sm backdrop-blur",
             active ? "bg-red-600 text-white border-red-600" : "bg-white/80 hover:bg-white",
           ].join(" ")}
-          aria-pressed={active}
-          title={active ? "Aus Favoriten entfernen" : "Zu Favoriten hinzufügen"}>
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            toggleFavorite(meal)
+          }}>
           {active ? "♥" : "♡"}
         </button>
       )}

@@ -24,6 +24,7 @@ export default function Home() {
         return (
           <>
             <MealLink
+              key={c.idCategory}
               link={`/category/${c.strCategory}`}
               linkName={c.strCategory}
               img={c.strCategoryThumb}
