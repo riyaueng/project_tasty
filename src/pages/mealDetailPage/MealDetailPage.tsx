@@ -1,29 +1,28 @@
-interface DetailProps {
-  img: string
-  altText: string
-  text: string
-  name: string
-  description: string
-  ingredients: string[]
-  link: string
-}
+import { useParams } from "react-router"
+import { useMeals } from "../../functions/Functions"
+import type { IMealsDetail } from "../../interfaces/Interfaces"
+import { useEffect, useState } from "react"
 
-export default function details(props: DetailProps) {
+export default function MealDetailPage() {
+  const { id } = useParams<{ id: string }>()
+  const { getMealDetail } = useMeals()
+  const [mealDetail, setMealDetail] = useState<IMealsDetail | null>(null)
+
+  useEffect(() => {
+    if (!id) return
+    ;(async () => {
+      const detail = await getMealDetail(id)
+      setMealDetail(detail)
+    })()
+  }, [id])
+
+  if (!mealDetail) return <div>Lade Details…</div>
+
+  const meal = mealDetail.meals[0] as any
+
   return (
     <div>
-      <img src={props.img} alt={props.altText} />
-      <div>
-        <h2>{props.name}</h2>
-        <p>{props.text}</p>
-      </div>
-
-      <div>
-        <h2>Ingredients</h2>
-        <ul>{props.ingredients}</ul>
-        <a href={props.link} target="_blank">
-          Watch on Youtube
-        </a>
-      </div>
+      <h3>{meal.strMeal}</h3>
     </div>
   )
 }
