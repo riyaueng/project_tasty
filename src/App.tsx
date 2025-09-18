@@ -1,5 +1,7 @@
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router"
 
+// routing
+
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
