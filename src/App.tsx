@@ -1,7 +1,25 @@
+<<<<<<< HEAD
 import "./App.css"
 
 function App() {
   return <></>
-}
+=======
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router"
 
-export default App
+function App() {
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={"Layout"}>
+        <Route index element={"Home"} />
+        <Route path="category/:name" element={"Category"} />
+        <Route path="meal/:id" element={"MealDetail"} />
+      </Route>
+    )
+  )
+  return (
+    <>
+      <RouterProvider router={router} />
+    </>
+  )
+>>>>>>> routing
+}
