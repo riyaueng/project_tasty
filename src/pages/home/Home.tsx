@@ -4,7 +4,6 @@ import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
 
 // TODO styling anpassen
-// FIXME missing key
 
 export default function Home() {
   const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
@@ -30,7 +29,7 @@ export default function Home() {
         {category.map((cat: Category, index: number) => {
           return (
             <>
-              <div>
+              <div key={cat.idCategory}>
                 <MealLink
                   key={cat.idCategory}
                   link={`/category/${cat.strCategory}`}
