@@ -2,7 +2,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from "./layout/Layout"
 import Home from "./pages/home/Home"
 import Categories from "./pages/category/Categories"
-import MealDetailPage from "./pages/MealDetailPage/MealDetailPage"
+import MealDetailPage from "./pages/mealDetailPage/MealDetailPage"
 import FavoritesPage from "./pages/favoritePage/FavoritePage"
 import PageWrapper from "./components/pageWrapper/PageWrapper"
 
