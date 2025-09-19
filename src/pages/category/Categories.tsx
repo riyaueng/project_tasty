@@ -5,9 +5,6 @@ import gsap from "gsap"
 import { Link, useParams } from "react-router"
 import SkeletonCard from "../../components/skeletonCard/SkeletonCard"
 
-// TODO styling anpassen
-// FIXME missing key
-
 export default function Categories() {
   const { name } = useParams<{ name: string }>()
   const { category, meals, fetchCategories, fetchMealsByCategories, loading } = useMeals()

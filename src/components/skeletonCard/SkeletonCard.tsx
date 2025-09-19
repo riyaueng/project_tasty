@@ -1,5 +1,3 @@
-// TODO styling an die MealCard anpassen
-
 export default function SkeletonCard() {
   return (
     <div className="animate-pulse rounded-md border overflow-hidden shadow-sm">

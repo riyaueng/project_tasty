@@ -1,11 +1,6 @@
 import { Link } from "react-router"
 import type { Meal } from "../../interfaces/Interfaces"
-import { useMeals } from "../../functions/Functions"
-import { useRef } from "react"
-
 import FavoriteButton from "../favoritebutton/FavoriteButton"
-
-// TODO styling anpassen
 
 interface MealLinkProps {
   link: string
@@ -13,7 +8,6 @@ interface MealLinkProps {
   img?: string
   description?: string
   className?: string
-  imgClassName?: string
   linkClassName?: string
   textClassName?: string
   meal?: Meal
@@ -24,9 +18,7 @@ export default function MealLink({
   link,
   linkName,
   img,
-  description,
   className = "",
-  imgClassName = "",
   linkClassName = "",
   textClassName = "",
   meal,

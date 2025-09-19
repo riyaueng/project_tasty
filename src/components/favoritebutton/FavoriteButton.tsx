@@ -3,11 +3,9 @@ import { useMeals } from "../../functions/Functions"
 import type { Meal } from "../../interfaces/Interfaces"
 import gsap from "gsap"
 
-// TODO styling anpassen
+type FavoriteButtonProps = { meal: Meal }
 
-type Props = { meal: Meal }
-
-export default function FavoriteButton({ meal }: Props) {
+export default function FavoriteButton({ meal }: FavoriteButtonProps) {
   const { toggleFavorite, isFavorite } = useMeals()
   const active = meal ? isFavorite(meal.idMeal) : false
   const heartRef = useRef<HTMLButtonElement>(null)

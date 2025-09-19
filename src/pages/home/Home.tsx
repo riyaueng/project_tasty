@@ -3,8 +3,6 @@ import { useMeals } from "../../functions/Functions"
 import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
 
-// TODO styling anpassen
-
 export default function Home() {
   const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
 
@@ -28,17 +26,13 @@ export default function Home() {
       <div className="grid grid-cols-3 gap-10">
         {category.map((cat: Category, index: number) => {
           return (
-            <>
-              <div key={cat.idCategory}>
-                <MealLink
-                  key={cat.idCategory}
-                  link={`/category/${cat.strCategory}`}
-                  linkName={cat.strCategory}
-                  img={cat.strCategoryThumb}
-                  index={index}
-                />
-              </div>
-            </>
+            <MealLink
+              key={cat.idCategory}
+              link={`/category/${cat.strCategory}`}
+              linkName={cat.strCategory}
+              img={cat.strCategoryThumb}
+              index={index}
+            />
           )
         })}
       </div>
