@@ -3,6 +3,7 @@ import { useMeals } from "../../functions/Functions"
 import type { IMealsDetail } from "../../interfaces/Interfaces"
 import { useEffect, useState } from "react"
 
+TODO styling anpassen
 // Todo styling anpassen
 
 export default function MealDetailPage() {

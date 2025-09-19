@@ -1,6 +1,8 @@
 import { useMeals } from "../../functions/Functions"
 import type { Meal } from "../../interfaces/Interfaces"
 
+TODO styling anpassen
+
 type Props = { meal: Meal; className?: string }
 
 export default function FavoriteButton({ meal, className = "" }: Props) {

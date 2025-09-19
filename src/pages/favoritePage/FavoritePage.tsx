@@ -2,6 +2,7 @@ import { Link } from "react-router"
 import { useMeals } from "../../functions/Functions"
 import MealLink from "../../components/mealLink/MealLink"
 
+TODO styling anpassen
 // Todo styling anpassen
 
 export default function FavoritesPage() {

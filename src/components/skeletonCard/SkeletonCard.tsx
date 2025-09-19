@@ -1,3 +1,4 @@
+TODO styling an die MealCard anpassen
 // Todo styling an die MealCard anpassen
 
 export default function SkeletonCard() {
