@@ -27,15 +27,16 @@ export default function Home() {
         <h2 className="text-4xl font-lightest">Or go through our categories</h2>
       </div>
       <div className="grid grid-cols-3 gap-10">
-        {category.map((c: Category) => {
+        {category.map((cat: Category, index: number) => {
           return (
             <>
               <div>
                 <MealLink
-                  key={c.idCategory}
-                  link={`/category/${c.strCategory}`}
-                  linkName={c.strCategory}
-                  img={c.strCategoryThumb}
+                  key={cat.idCategory}
+                  link={`/category/${cat.strCategory}`}
+                  linkName={cat.strCategory}
+                  img={cat.strCategoryThumb}
+                  index={index}
                 />
               </div>
             </>

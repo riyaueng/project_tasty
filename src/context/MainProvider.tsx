@@ -27,17 +27,13 @@ export default function MainProvider({ children }: { children: React.ReactNode }
         const parsed = JSON.parse(raw) as Meal[]
         dispatch({ type: "SET_FAVORITES", payload: parsed })
       }
-    } catch {
-      /* ignore */
-    }
+    } catch {}
   }, [])
 
   useEffect(() => {
     try {
       localStorage.setItem("tasty.favorites", JSON.stringify(states.favorites))
-    } catch {
-      /* ignore */
-    }
+    } catch {}
   }, [states.favorites])
 
   // ? Fetch Categories

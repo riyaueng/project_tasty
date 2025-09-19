@@ -20,7 +20,7 @@ export default function FavoritesPage() {
       {favorites.length === 0 ? (
         <p>Noch keine Favoriten.</p>
       ) : (
-        <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(220px,1fr))]">
+        <div className="grid gap-4 grid-cols-4">
           {favorites.map((m) => (
             <MealLink
               key={m.idMeal}
