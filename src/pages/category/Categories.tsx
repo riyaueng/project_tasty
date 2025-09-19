@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router"
 import SkeletonCard from "../../components/skeletonCard/SkeletonCard"
 
 // TODO styling anpassen
+// FIXME missing key
 
 export default function Categories() {
   const { name } = useParams<{ name: string }>()
@@ -26,7 +27,7 @@ export default function Categories() {
   useEffect(() => {
     if (meals.length === 0) return
     setShowMeals(false)
-    const timer = setTimeout(() => setShowMeals(true), 500)
+    const timer = setTimeout(() => setShowMeals(true), 400)
     return () => clearTimeout(timer)
   }, [meals])
 
@@ -50,18 +51,20 @@ export default function Categories() {
 
   return (
     <div className="space-y-6">
-      <div className="flex gap-2 mb-6">
+      <div className="flex gap-2 mb-6 flex-wrap mt-10">
         {category.map((c) => (
-          <Link key={c.idCategory} to={`/category/${c.strCategory}`}>
-            {c.strCategory}
-          </Link>
+          <div key={c.idCategory} className="mb-5">
+            <Link to={`/category/${c.strCategory}`} className="py-1 px-5 border border-green rounded-lg text-blue">
+              {c.strCategory}
+            </Link>
+          </div>
         ))}
       </div>
 
       <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {loading || !showMeals
           ? Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)
-          : meals.map((m) => (
+          : meals.map((m, index) => (
               <MealLink
                 key={m.idMeal}
                 link={`/meal/${m.idMeal}`}
@@ -69,7 +72,7 @@ export default function Categories() {
                 img={m.strMealThumb}
                 meal={m}
                 className="meal-card"
-                imgClassName="w-full aspect-square object-cover"
+                index={index}
               />
             ))}
       </div>
