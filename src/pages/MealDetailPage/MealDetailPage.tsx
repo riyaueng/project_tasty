@@ -3,6 +3,8 @@ import { useMeals } from "../../functions/Functions"
 import type { IMealsDetail } from "../../interfaces/Interfaces"
 import { useEffect, useState } from "react"
 
+// Todo styling anpassen
+
 export default function MealDetailPage() {
   const { id } = useParams<{ id: string }>()
   const { getMealDetail } = useMeals()

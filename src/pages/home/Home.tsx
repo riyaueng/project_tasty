@@ -3,6 +3,9 @@ import { useMeals } from "../../functions/Functions"
 import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
 
+// Todo styling anpassen
+// ! Fix missing key
+
 export default function Home() {
   const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import { NavLink } from "react-router"
 
+// Todo Input richtig einbinden sodas es richtig funktioniert
+
 export default function Header() {
   const [search, setSearch] = useState("")
   return (

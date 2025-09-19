@@ -6,8 +6,6 @@ import MealDetailPage from "./pages/MealDetailPage/MealDetailPage"
 import FavoritesPage from "./pages/favoritePage/FavoritePage"
 import PageWrapper from "./components/pageWrapper/PageWrapper"
 
-// routing
-
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(

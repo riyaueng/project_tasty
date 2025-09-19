@@ -4,6 +4,8 @@ import { useMeals } from "../../functions/Functions"
 import { useRef } from "react"
 import gsap from "gsap"
 
+// Todo styling anpassen
+
 interface MealLinkProps {
   link: string
   linkName: string
