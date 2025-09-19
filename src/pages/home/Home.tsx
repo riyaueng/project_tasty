@@ -2,11 +2,12 @@ import { useEffect } from "react"
 import { useMeals } from "../../functions/Functions"
 import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
+import SearchResult from "../../components/searchResult/SearchResult"
 
-// FIXME Fehlermeldung bei der Suche und Funktion der Suche
+// FIXME Result bleibt offen wenn man die Seite Wechselt
 
 export default function Home() {
-  const { category, meals, fetchCategories, fetchMealsByCategories, query } = useMeals()
+  const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
 
   useEffect(() => {
     if (category.length === 0) {
@@ -22,16 +23,10 @@ export default function Home() {
 
   return (
     <>
-      {meals.length === 0 && query.trim().length > 0 && (
-        <>
-          <div>
-            <p>Sorry, no matching meal found.</p>
-          </div>
-        </>
-      )}
       <div className="mb-6 mt-10">
         <h2 className="text-4xl font-lightest">Or go through our categories</h2>
       </div>
+      <SearchResult />
       <div className="grid grid-cols-3 gap-10">
         {category.map((cat: Category, index: number) => {
           return (

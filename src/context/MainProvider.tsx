@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useMemo, useReducer, useState } from "
 import { initialState, reducer } from "../functions/Functions"
 import type { IMealsDetail, IState, Meal } from "../interfaces/Interfaces"
 import { getCategories, getMealDetail, getMealsByCategory, searchMeals } from "../api/Api"
+import { useLocation } from "react-router"
 
 export interface MainProviderProps extends IState {
   fetchCategories: () => Promise<void>
@@ -14,6 +15,9 @@ export interface MainProviderProps extends IState {
   clearFavorites: () => void
   setSearch: React.Dispatch<React.SetStateAction<string>>
   search: string
+  submitSearch: () => Promise<void>
+  resultsVisible: boolean
+  hideResults: () => void
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -22,6 +26,7 @@ export const mainContext = createContext<MainProviderProps | undefined>(undefine
 export default function MainProvider({ children }: { children: React.ReactNode }) {
   const [states, dispatch] = useReducer(reducer, initialState)
   const [search, setSearch] = useState<string>("")
+  const [resultsVisible, setResultsVisible] = useState(false)
 
   useEffect(() => {
     try {
@@ -103,6 +108,17 @@ export default function MainProvider({ children }: { children: React.ReactNode }
     dispatch({ type: "SET_FAVORITES", payload: [] })
   }
 
+  const submitSearch = async () => {
+    const q = search.trim()
+    if (!q) return
+    setQuery(q)
+    await searchMealsByName(q)
+    setResultsVisible(true)
+    setSearch("")
+  }
+
+  const hideResults = () => setResultsVisible(false)
+
   const value = useMemo<MainProviderProps>(
     () => ({
       ...states,
@@ -116,8 +132,11 @@ export default function MainProvider({ children }: { children: React.ReactNode }
       clearFavorites,
       setSearch,
       search,
+      submitSearch,
+      resultsVisible,
+      hideResults,
     }),
-    [states]
+    [states, search, resultsVisible]
   )
 
   return <mainContext.Provider value={value}>{children}</mainContext.Provider>

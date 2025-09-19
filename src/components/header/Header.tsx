@@ -1,21 +1,14 @@
 import { NavLink } from "react-router"
 import { useMeals } from "../../functions/Functions"
+import SearchResult from "../searchResult/SearchResult"
+import { useEffect } from "react"
 
 export default function Header() {
-  const { searchMealsByName, query, setQuery } = useMeals()
+  const { search, setSearch, submitSearch } = useMeals()
 
-  const handleSearch = (e) => {
-    e.preventDefault()
-    const q = query.trim()
-    if (q.length === 0) {
-      return (
-        <div>
-          <p>Sorry, no matching meal found.</p>
-        </div>
-      )
-    }
-    searchMealsByName(q)
-    console.log(q)
+  const handleSearch = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    void submitSearch()
   }
 
   return (
@@ -45,21 +38,22 @@ export default function Header() {
           </NavLink>
         </div>
 
-        <div className="flex items-center justify-start md:justify-end w-full">
-          <input
-            type="text"
-            placeholder="Type something to search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            className="  p-3 bg-input text-grey border-t-1 border-b-1 border-l-1 border-grey  rounded-tl-lg rounded-bl-lg w-[80%] md:w-[50%]"
-          />
-          <button
-            type="button"
-            onClick={handleSearch}
-            className="font-headline p-3 bg-blue text-white rounded-tr-lg rounded-br-lg  border-1 border-blue">
-            <img src="/img/icon_search.png" alt="Search Button" className="w-6" />
-          </button>
-        </div>
+        <form onSubmit={handleSearch} className="w-full">
+          <div className="flex items-center justify-start md:justify-end w-full">
+            <input
+              type="text"
+              placeholder="Type something to search"
+              value={search}
+              onChange={(event) => setSearch(event.target.value)}
+              className="  p-3 bg-input text-grey border-t-1 border-b-1 border-l-1 border-grey  rounded-tl-lg rounded-bl-lg w-[80%] md:w-[50%]"
+            />
+            <button
+              type="submit"
+              className="font-headline p-3 bg-blue text-white rounded-tr-lg rounded-br-lg  border-1 border-blue">
+              <img src="/img/icon_search.png" alt="Search Button" className="w-6" />
+            </button>
+          </div>
+        </form>
       </div>
     </header>
   )
