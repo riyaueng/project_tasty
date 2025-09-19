@@ -4,7 +4,6 @@ import { NavLink } from "react-router"
 // TODO Input richtig einbinden sodas es richtig funktioniert
 
 export default function Header() {
-  const [search, setSearch] = useState("")
   return (
     <header className="flex items-center flex-col px-30">
       <img src="/img/logo_tasty.svg" alt="" className="m-14" />
@@ -36,7 +35,7 @@ export default function Header() {
           <input
             type="text"
             placeholder="Type something to search"
-            value={search}
+            value={""}
             className="  p-3 bg-input text-grey border-t-1 border-b-1 border-l-1 border-grey  rounded-tl-lg rounded-bl-lg w-[50%]"
           />
           <button
