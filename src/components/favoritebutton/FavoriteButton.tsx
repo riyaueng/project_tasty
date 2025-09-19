@@ -1,7 +1,7 @@
 import { useMeals } from "../../functions/Functions"
 import type { Meal } from "../../interfaces/Interfaces"
 
-TODO styling anpassen
+// TODO styling anpassen
 
 type Props = { meal: Meal; className?: string }
 

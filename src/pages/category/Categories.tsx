@@ -5,8 +5,7 @@ import gsap from "gsap"
 import { Link, useParams } from "react-router"
 import SkeletonCard from "../../components/skeletonCard/SkeletonCard"
 
-TODO styling anpassen
-// Todo styling anpassen
+// TODO styling anpassen
 
 export default function Categories() {
   const { name } = useParams<{ name: string }>()
