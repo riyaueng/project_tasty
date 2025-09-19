@@ -26,7 +26,7 @@ export default function Categories() {
   useEffect(() => {
     if (meals.length === 0) return
     setShowMeals(false)
-    const timer = setTimeout(() => setShowMeals(true), 300)
+    const timer = setTimeout(() => setShowMeals(true), 500)
     return () => clearTimeout(timer)
   }, [meals])
 

@@ -22,19 +22,26 @@ export default function Home() {
   }, [category.length, meals.length])
 
   return (
-    <div>
-      {category.map((c: Category) => {
-        return (
-          <>
-            <MealLink
-              key={c.idCategory}
-              link={`/category/${c.strCategory}`}
-              linkName={c.strCategory}
-              img={c.strCategoryThumb}
-            />
-          </>
-        )
-      })}
-    </div>
+    <>
+      <div className="mb-6 mt-10">
+        <h2 className="text-4xl font-lightest">Or go through our categories</h2>
+      </div>
+      <div className="grid grid-cols-3 gap-10">
+        {category.map((c: Category) => {
+          return (
+            <>
+              <div>
+                <MealLink
+                  key={c.idCategory}
+                  link={`/category/${c.strCategory}`}
+                  linkName={c.strCategory}
+                  img={c.strCategoryThumb}
+                />
+              </div>
+            </>
+          )
+        })}
+      </div>
+    </>
   )
 }

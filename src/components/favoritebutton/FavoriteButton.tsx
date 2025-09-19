@@ -20,7 +20,6 @@ export default function FavoriteButton({ meal, className = "" }: Props) {
         className,
       ].join(" ")}>
       <span>{active ? "♥" : "♡"}</span>
-      <span>Favorit</span>
     </button>
   )
 }
