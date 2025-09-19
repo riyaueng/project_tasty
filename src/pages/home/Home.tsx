@@ -3,8 +3,10 @@ import { useMeals } from "../../functions/Functions"
 import type { Category } from "../../interfaces/Interfaces"
 import MealLink from "../../components/mealLink/MealLink"
 
+// FIXME Fehlermeldung bei der Suche und Funktion der Suche
+
 export default function Home() {
-  const { category, meals, fetchCategories, fetchMealsByCategories } = useMeals()
+  const { category, meals, fetchCategories, fetchMealsByCategories, query } = useMeals()
 
   useEffect(() => {
     if (category.length === 0) {
@@ -20,6 +22,13 @@ export default function Home() {
 
   return (
     <>
+      {meals.length === 0 && query.trim().length > 0 && (
+        <>
+          <div>
+            <p>Sorry, no matching meal found.</p>
+          </div>
+        </>
+      )}
       <div className="mb-6 mt-10">
         <h2 className="text-4xl font-lightest">Or go through our categories</h2>
       </div>

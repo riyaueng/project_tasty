@@ -7,9 +7,24 @@ import SkeletonCard from "../../components/skeletonCard/SkeletonCard"
 
 export default function Categories() {
   const { name } = useParams<{ name: string }>()
-  const { category, meals, fetchCategories, fetchMealsByCategories, loading } = useMeals()
+  const { category, meals, fetchCategories, fetchMealsByCategories, loading, query } = useMeals()
   const [showMeals, setShowMeals] = useState(false)
   const gridRef = useRef<HTMLDivElement>(null)
+
+  const listMeals =
+    loading || !showMeals
+      ? Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)
+      : meals.map((m, index) => (
+          <MealLink
+            key={m.idMeal}
+            link={`/meal/${m.idMeal}`}
+            linkName={m.strMeal}
+            img={m.strMealThumb}
+            meal={m}
+            className="meal-card"
+            index={index}
+          />
+        ))
 
   useEffect(() => {
     if (category.length === 0) void fetchCategories()
@@ -59,19 +74,15 @@ export default function Categories() {
       </div>
 
       <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {loading || !showMeals
-          ? Array.from({ length: 12 }).map((_, i) => <SkeletonCard key={i} />)
-          : meals.map((m, index) => (
-              <MealLink
-                key={m.idMeal}
-                link={`/meal/${m.idMeal}`}
-                linkName={m.strMeal}
-                img={m.strMealThumb}
-                meal={m}
-                className="meal-card"
-                index={index}
-              />
-            ))}
+        {meals.length === 0 && query.trim().length > 0 && (
+          <>
+            <div>
+              <p>Sorry, no matching meal found.</p>
+            </div>
+          </>
+        )}
+
+        {meals.length > 0 && listMeals}
       </div>
     </div>
   )

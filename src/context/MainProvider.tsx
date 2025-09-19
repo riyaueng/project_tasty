@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useMemo, useReducer } from "react"
+import React, { createContext, useEffect, useMemo, useReducer, useState } from "react"
 import { initialState, reducer } from "../functions/Functions"
 import type { IMealsDetail, IState, Meal } from "../interfaces/Interfaces"
 import { getCategories, getMealDetail, getMealsByCategory, searchMeals } from "../api/Api"
@@ -12,6 +12,8 @@ export interface MainProviderProps extends IState {
   toggleFavorite: (meal: Meal) => void
   isFavorite: (idMeal: string) => boolean
   clearFavorites: () => void
+  setSearch: React.Dispatch<React.SetStateAction<string>>
+  search: string
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -19,6 +21,7 @@ export const mainContext = createContext<MainProviderProps | undefined>(undefine
 
 export default function MainProvider({ children }: { children: React.ReactNode }) {
   const [states, dispatch] = useReducer(reducer, initialState)
+  const [search, setSearch] = useState<string>("")
 
   useEffect(() => {
     try {
@@ -111,6 +114,8 @@ export default function MainProvider({ children }: { children: React.ReactNode }
       toggleFavorite,
       isFavorite,
       clearFavorites,
+      setSearch,
+      search,
     }),
     [states]
   )
