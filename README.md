@@ -1,69 +1,104 @@
-# React + TypeScript + Vite
+# 🍳 Tasty
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Eine Rezept-Webapp zum Entdecken leckerer Gerichte – entwickelt mit React, TypeScript und der TheMealDB API für Hobby-Köche und Kochbegeisterte.
 
-Currently, two official plugins are available:
+<img width="1240" height="1118" alt="tasty_start" src="https://github.com/user-attachments/assets/9708a376-defa-484e-828e-2d7aa1835fc9" />
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 📋 Über das Projekt
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Tasty ist eine übersichtliche Sammlung leckerer Gerichte und Rezepte, die als Inspiration für die nächste Mahlzeit dienen. Nutzer können Rezepte nach Anleitung nachkochen oder sich das zugehörige Kochvideo anschauen. Die Webapp richtet sich an Hobby-Köche, Kochbegeisterte und alle, die neue Gerichte entdecken möchten.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Das Projekt entstand während eines Gruppenprojekts in meiner Weiterbildung. Mit React, TypeScript und der TheMealDB API haben wir eine skalierbare Anwendung mit Favoriten-Funktion, Kategoriefilterung und Detailansichten umgesetzt. Der State wird zentral über `useReducer` und Context API verwaltet.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Technologien
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **React** - UI-Framework mit komponentenbasierter Architektur
+- **TypeScript** - Typisierte Entwicklung für robuste Code-Qualität
+- **Vite** - Modernes Build-Tool mit Hot-Reload
+- **Context API** - Globales State-Management mit MainProvider
+- **useReducer** - Strukturierte State-Verwaltung für komplexe Logik
+- **TheMealDB API** - Externe Datenquelle für Gerichte und Rezepte
+- **Axios** - HTTP-Client für API-Requests
+- **CSS3** - Modulares Styling
+- **ESLint** - Code-Qualität und Linting
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ✨ Features
+
+- ✅ **TheMealDB API-Integration** - Abruf von Kategorien, Gerichten und Rezeptdetails
+- ✅ **Kategoriefilterung** - Gerichte nach Kategorien durchstöbern
+- ✅ **Suchfunktion** - Suche nach Gerichtsnamen
+- ✅ **Favoriten-System** - Hinzufügen/Entfernen von Lieblingsgerichten mit LocalStorage-Persistenz
+- ✅ **Detailansicht** - Vollständige Rezepte mit Zutaten, Anleitung und Kochvideo
+- ✅ **Skeleton-Loader** - Anzeige von Ladezuständen während API-Calls
+- ✅ **Wiederverwendbare Komponenten** - Modulare UI-Bausteine (Header, Footer, FavoriteButton)
+<!--- - ✅ **Responsive Design** - Optimiert für verschiedene Bildschirmgrößen --->
+
+---
+
+## 📚 Was wir gelernt haben
+
+- **useReducer für komplexes State-Management**: Strukturierte Verwaltung von Favoriten, Kategorien, Lade- und Fehlerzuständen
+- **Context API**: Bereitstellung von globalem State für alle Komponenten ohne Prop-Drilling
+- **API-Integration mit Axios**: Zentrale Instanz mit Basis-URL für REST-API-Anbindung
+- **Asynchrone Datenverarbeitung**: Fetch-Funktionen für Kategorien, Gerichte und Detailinformationen
+- **LocalStorage-Persistenz**: Speicherung und Wiederherstellung von Favoriten über Sitzungen hinweg
+- **Reducer-Pattern**: Klare Trennung von State-Logik durch Actions und Reducer-Funktionen
+- **TypeScript-Interfaces**: Typdefinitionen für API-Responses und Component-Props
+- **Skeleton-Loader**: Bessere UX durch Platzhalter während Ladezuständen
+
+---
+
+## 📸 Screenshots
+
+### Gerichte-Übersicht
+
+<img width="1240" height="1189" alt="tasty_category" src="https://github.com/user-attachments/assets/2eabed25-ff3c-47f4-94f5-692d20bb641a" />
+
+
+### Rezept-Detailansicht
+
+<img width="1240" height="699" alt="tasty_responsive_design" src="https://github.com/user-attachments/assets/6d82d49a-3925-4a3e-846b-460e774eab19" />
+
+
+### Favoriten-Seite
+
+<img width="1240" height="824" alt="tasty_favorites" src="https://github.com/user-attachments/assets/2538c8f5-f7f7-42d8-9442-ce496c26a312" />
+
+
+### Skeleton-Loader
+![tasty_loader](https://github.com/user-attachments/assets/6b61d661-2e7a-43f8-8f8c-b1994017b656)
+
+
+---
+
+## 🌐 API-Integration
+
+**Verwendete API:** TheMealDB (`https://www.themealdb.com/api.php`)
+
+**Implementierte Endpunkte:**
+- Kategorien abrufen
+- Gerichte nach Kategorie filtern
+- Suche nach Gerichtsnamen
+- Detailinformationen per ID
+
+**Besonderheiten:**
+- Zentrale Axios-Instanz mit Basis-URL
+- Asynchrone Funktionen für alle Requests
+- Parameterübergabe direkt in Request-Funktionen
+- Klare Trennung von Datenzugriff und UI
+- Einfache Erweiterbarkeit für neue Endpunkte
+
+---
+
+## 🧩 Mögliche Erweiterungen
+
+- [ ] Responsive Design (Tablet, Mobil)
+- [ ] Erweiterte Suchfilter (z. B. Zutaten oder Länder)
+- [ ] Portionsrechner
+- [ ] Dark Mode
