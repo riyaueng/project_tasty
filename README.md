@@ -10,7 +10,7 @@ Eine Rezept-Webapp zum Entdecken leckerer Gerichte – entwickelt mit React, Typ
 
 Tasty ist eine übersichtliche Sammlung leckerer Gerichte und Rezepte, die als Inspiration für die nächste Mahlzeit dienen. Nutzer können Rezepte nach Anleitung nachkochen oder sich das zugehörige Kochvideo anschauen. Die Webapp richtet sich an Hobby-Köche, Kochbegeisterte und alle, die neue Gerichte entdecken möchten.
 
-Das Projekt entstand während eines Gruppenprojekts in meiner Weiterbildung. Mit React, TypeScript und der TheMealDB API haben wir eine skalierbare Anwendung mit Favoriten-Funktion, Kategoriefilterung und Detailansichten umgesetzt. Der State wird zentral über `useReducer` und Context API verwaltet.
+Das Projekt entstand während eines Gruppenprojekts in unserer Weiterbildung. Mit React, TypeScript und der TheMealDB API haben wir eine skalierbare Anwendung mit Favoriten-Funktion, Kategoriefilterung und Detailansichten umgesetzt. Der State wird zentral über `useReducer` und Context API verwaltet.
 
 ---
 
